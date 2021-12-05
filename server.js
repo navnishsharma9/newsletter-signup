@@ -3,11 +3,11 @@ const request = require("request");
 const path = require("path");
 const https = require("https");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
-
-
+require("dotenv").config();
+const { MAILCHIMP_APIKEY, MAILCHIMP_SERVER_PREFIX, LISTID }= process.env;
 mailchimp.setConfig({
-  apiKey: "2a40284eaf5c61ddfa5c1594fa3a217a-us6",
-  server: "us6",
+  apiKey: MAILCHIMP_APIKEY,
+  server: MAILCHIMP_SERVER_PREFIX,
 });
 const app = express();
 
@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
 
-  const listId = "4f0fa8ca95";
+  const listId = LISTID;
   const subscribingUser = {
     fName: req.body.firstName,
     lName: req.body.firstName,

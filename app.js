@@ -2,7 +2,8 @@ const express = require("express");
 const request = require("request");
 const https = require("https");
 const path = require("path");
-
+require("dotenv").config();
+const {MAILCHIMP_AUTH, MAILCHIMP_URI} = process.env;
 
 const app = express();
 
@@ -42,10 +43,10 @@ app.post("/", (req, res) => {
 
     const jsonData = JSON.stringify(data);
 
-    const url = "https://us6.api.mailchimp.com/3.0/lists/4f0fa8ca95";
+    const url = MAILCHIMP_URI;
     const option = {
         method: "POST",
-        auth: "Navnish:2a40284eaf5c61ddfa5c1594fa3a217a-us6"
+        auth: MAILCHIMP_AUTH
     };
 
 
