@@ -67,7 +67,7 @@ app.get("/unsubscribe", (req, res)=>{
 })
 
 app.post("/unsubscribe", (req, res)=>{
-  const listId = "4f0fa8ca95";
+  const listId = "";
   const email = req.body.email;
 
   async function run(){
